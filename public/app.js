@@ -11,8 +11,6 @@ const phrases = [
   "facebook",
   "strafe gaming",
 ];
-
-// event listener - start game
 const btn = document.querySelector(".btn__reset");
 btn.addEventListener("click", (e) => {
   const overlay = document.querySelector("#overlay");
@@ -66,8 +64,27 @@ qwerty.addEventListener('click', (event) => {
       hearts[missed].src = "images/lostHeart.png";
       hearts.length--;
       missed += 1;
-    };
+    }
+    checkWin()
   }
-
-
 });
+
+function checkWin() {
+  const letter = document.querySelectorAll('.letter');
+  const showLetter = document.querySelectorAll('.show');
+  const h2 = overlay.querySelector('h2');
+  const a = overlay.querySelector('a');
+  if ( letter.length === showLetter.length){
+    const overlay = document.querySelector("#overlay");
+    overlay.className = 'win';
+    overlay.style.display = "flex";
+    h2.textContent = "you won!";
+    a.textContent = "Try again?";
+  } else if ( missed > 4 ) {
+    const overlay = document.querySelector("#overlay");
+    overlay.className = 'lose';
+    overlay.style.display = "flex";
+    h2.textContent = "you lost :(";
+    a.textContent = "Try again?";
+  }
+};
