@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://indaqoo.github.io/techdegree-unit-6/",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "gh-paged -d public"
   },
   "author": "Roberts Peirags",
   "license": "MIT",
