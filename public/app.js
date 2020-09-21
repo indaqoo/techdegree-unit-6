@@ -51,6 +51,7 @@ qwerty.addEventListener('click', (event) => {
       missed += 1;
     }
   checkWin();
+<<<<<<< HEAD
   }
 
 
@@ -64,6 +65,8 @@ qwerty.addEventListener('click', (event) => {
         }
     }
     return match;
+=======
+>>>>>>> 82e573d0ca979c8d713c588aef4714c766056aa0
   }
 
 });
