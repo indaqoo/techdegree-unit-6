@@ -37,6 +37,26 @@ function addPhraseToDisplay(arr) {
 const phraseArray = getRandomPhraseAsArray(phrases);
 addPhraseToDisplay(phraseArray);
 
+function checkWin() {
+  const letter = document.querySelectorAll('.letter');
+  const showLetter = document.querySelectorAll('.show');
+  const h2 = overlay.querySelector('h2');
+  const a = overlay.querySelector('a');
+  if ( letter.length === showLetter.length){
+    const overlay = document.querySelector("#overlay");
+    overlay.className = 'win';
+    overlay.style.display = "flex";
+    h2.textContent = "you won!";
+    a.textContent = "Try again?";
+  } else if ( missed > 4 ) {
+    const overlay = document.querySelector("#overlay");
+    overlay.className = 'lose';
+    overlay.style.display = "flex";
+    h2.textContent = "you lost :(";
+    a.textContent = "Try again?";
+  }
+};
+
 qwerty.addEventListener('click', (event) => {
   const button = event.target;
   if ( button.tagName === "BUTTON" ) {
@@ -67,23 +87,3 @@ qwerty.addEventListener('click', (event) => {
   }
 
 });
-
-function checkWin() {
-  const letter = document.querySelectorAll('.letter');
-  const showLetter = document.querySelectorAll('.show');
-  const h2 = overlay.querySelector('h2');
-  const a = overlay.querySelector('a');
-  if ( letter.length === showLetter.length){
-    const overlay = document.querySelector("#overlay");
-    overlay.className = 'win';
-    overlay.style.display = "flex";
-    h2.textContent = "you won!";
-    a.textContent = "Try again?";
-  } else if ( missed > 4 ) {
-    const overlay = document.querySelector("#overlay");
-    overlay.className = 'lose';
-    overlay.style.display = "flex";
-    h2.textContent = "you lost :(";
-    a.textContent = "Try again?";
-  }
-};
