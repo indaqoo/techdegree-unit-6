@@ -3,7 +3,6 @@ const phrase = document.querySelector("#phrase");
 const scoreBoard = document.querySelector('#scoreboard');
 let missed = 0;
 
-// phrases
 const phrases = [
   "hello world",
   "wheel of success",
@@ -17,13 +16,11 @@ btn.addEventListener("click", (e) => {
   overlay.style.display = "none";
 });
 
-// This function gets random phrase from array
 function getRandomPhraseAsArray(array) {
   const randomPhrase = array[Math.floor(Math.random() * array.length)];
   return randomPhrase.split("");
 }
 
-// function that add  letters as a list item and adds a class letter or space
 function addPhraseToDisplay(arr) {
   for (let i = 0; i < arr.length; i++) {
     const li = document.createElement("li");
@@ -40,18 +37,6 @@ function addPhraseToDisplay(arr) {
 const phraseArray = getRandomPhraseAsArray(phrases);
 addPhraseToDisplay(phraseArray);
 
-function checkLetter(button) {
-  const checkLetter = document.querySelectorAll('.letter');
-  let match = null;
-  for( let i = 0 ; i < checkLetter.length ; i += 1) {
-      if ( button.textContent === checkLetter[i].textContent ) {
-        checkLetter[i].classList.add('show');
-        match = button.textContent;
-      }
-  }
-  return match;
-}
-
 qwerty.addEventListener('click', (event) => {
   const button = event.target;
   if ( button.tagName === "BUTTON" ) {
@@ -65,8 +50,22 @@ qwerty.addEventListener('click', (event) => {
       hearts.length--;
       missed += 1;
     }
-    checkWin()
+  checkWin();
   }
+
+
+  function checkLetter(button) {
+    const checkLetter = document.querySelectorAll('.letter');
+    let match = null;
+    for( let i = 0 ; i < checkLetter.length ; i += 1) {
+        if ( button.textContent === checkLetter[i].textContent ) {
+          checkLetter[i].classList.add('show');
+          match = button.textContent;
+        }
+    }
+    return match;
+  }
+
 });
 
 function checkWin() {
