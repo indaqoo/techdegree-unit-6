@@ -52,7 +52,6 @@ function checkLetter(button) {
   }
   return match;
 }
-console.log( document.querySelectorAll('.letter'));
 
 qwerty.addEventListener('click', (event) => {
   const button = event.target;
