@@ -1,5 +1,6 @@
 const qwerty = document.querySelector("#qwerty");
 const phrase = document.querySelector("#phrase");
+const scoreBoard = document.querySelector('#scoreboard');
 let missed = 0;
 
 // phrases
@@ -52,15 +53,21 @@ function checkLetter(button) {
   }
   return match;
 }
-console.log( document.querySelectorAll('.letter'));
 
 qwerty.addEventListener('click', (event) => {
   const button = event.target;
   if ( button.tagName === "BUTTON" ) {
     button.classList.add('chosen');
+    button.disabled = true;
     if (checkLetter(button)) {
       button.style.background = '#76CE82';
-    }
-    button.disabled = true;
+    } else {
+      const hearts = document.querySelectorAll("img");
+      hearts[missed].src = "images/lostHeart.png";
+      hearts.length--;
+      missed += 1;
+    };
   }
+
+
 });
