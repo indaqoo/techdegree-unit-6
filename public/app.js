@@ -28,6 +28,8 @@ function loadGame() {
   addPhraseToDisplay(phraseArray);
 }
 
+
+
 function resetGame() {
   const gameReset = {
     resetKeyboard: () => {
