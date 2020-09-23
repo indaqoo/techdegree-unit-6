@@ -7,17 +7,16 @@ const overlay = document.querySelector("#overlay");
 let missed = 0;
 
 const phrases = [
-  "hello world",
-  "wheel of success",
-  "social network",
-  "facebook",
-  "strafe gaming",
+  "Change the world",
+  "Strive for greatness",
+  "Never regret anything",
+  "Everything you can imagine is real",
+  "What we think  we become",
 ];
-
 
 btn.addEventListener("click", (e) => {
   overlay.style.display = "none";
-  if ( overlay.className === 'start' ) {
+  if (overlay.className === "start") {
     loadGame();
   } else {
     resetGame();
@@ -32,16 +31,16 @@ function loadGame() {
 function resetGame() {
   const gameReset = {
     resetKeyboard: () => {
-      const parent = document.querySelectorAll('.chosen');
+      const parent = document.querySelectorAll(".chosen");
       for (let i = 0; i < parent.length; i++) {
         let item = parent[i].classList.remove("chosen");
-        let item2 = parent[i].disabled = false;
+        let item2 = (parent[i].disabled = false);
         parent[i].style.background = "";
       }
     },
     resetHearts: () => {
       const hearts = document.querySelectorAll("img");
-      for ( let i = 0 ; i < hearts.length ; i++ ) {
+      for (let i = 0; i < hearts.length; i++) {
         hearts[i].src = "images/liveHeart.png";
       }
       missed = 0;
@@ -52,7 +51,7 @@ function resetGame() {
         li[i].remove();
       }
     },
-  }
+  };
   gameReset.resetKeyboard();
   gameReset.resetHearts();
   gameReset.resetPhrase();
@@ -60,7 +59,9 @@ function resetGame() {
 }
 
 function getRandomPhraseAsArray(array) {
-  const randomPhrase = array[Math.floor(Math.random() * array.length)];
+  const randomPhrase = array[
+    Math.floor(Math.random() * array.length)
+  ].toLowerCase();
   return randomPhrase.split("");
 }
 
@@ -81,29 +82,32 @@ function checkWin() {
   const title = document.querySelector(".title");
   const letter = document.querySelectorAll(".letter").length;
   const showLetter = document.querySelectorAll(".show").length;
-  function overlayState(overlayClass, overlayDisplay, overlayTitle, overlayButton) {
+  function overlayState(
+    overlayClass,
+    overlayDisplay,
+    overlayTitle,
+    overlayButton
+  ) {
     overlay.className = overlayClass;
     overlay.style.display = overlayDisplay;
     title.textContent = overlayTitle;
     btn.textContent = overlayButton;
-  };
+  }
   const gameState = {
     gameWin: () => {
       overlayState("win", "flex", "Wooah! You win.", "CONTINUE");
     },
     gameLose: () => {
       overlayState("lose", "flex", "Darn! You lost.", "RESTART");
-    }
+    },
   };
 
-  if ( letter === showLetter ) {
+  if (letter === showLetter) {
     gameState.gameWin();
-  } else if ( missed > 4 ) {
+  } else if (missed > 4) {
     gameState.gameLose();
-  };
-
-};
-
+  }
+}
 
 qwerty.addEventListener("click", (event) => {
   const button = event.target;
