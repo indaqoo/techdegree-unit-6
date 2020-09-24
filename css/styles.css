@@ -53,6 +53,7 @@ button {
   -webkit-transition: var(--transition);
   -o-transition: var(--transition);
   transition: var(--transition);
+  cursor: pointer;
 }
 
 .main-container {
@@ -144,6 +145,7 @@ button {
 
 .start a {
   color: var(--color-win);
+  cursor: pointer;
 }
 
 .win {
@@ -152,6 +154,7 @@ button {
 
 .win a {
   color: var(--color-win);
+  cursor: pointer;
 }
 
 .lose {
@@ -160,4 +163,5 @@ button {
 
 .lose a {
   color: var(--color-lose);
+  cursor: pointer;
 }
