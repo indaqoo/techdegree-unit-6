@@ -33,11 +33,11 @@ function loadGame() {
 function resetGame() {
   const gameReset = {
     resetKeyboard: () => {
-      const parent = document.querySelectorAll(".chosen");
-      for (let i = 0; i < parent.length; i++) {
-        let item = parent[i].classList.remove("chosen");
-        let item2 = (parent[i].disabled = false);
-        parent[i].style.background = "";
+      const chosenKey = document.querySelectorAll(".chosen");
+      for (let i = 0; i < chosenKey.length; i++) {
+        let item = chosenKey[i].classList.remove("chosen");
+        let item2 = chosenKey[i].disabled = false;
+       chosenKey[i].style.background = "";
       }
     },
     resetHearts: () => {
@@ -45,7 +45,6 @@ function resetGame() {
       for (let i = 0; i < hearts.length; i++) {
         hearts[i].src = "images/liveHeart.png";
       }
-      missed = 0;
     },
     resetPhrase: () => {
       const li = phrase.querySelectorAll("li");
@@ -57,6 +56,7 @@ function resetGame() {
   gameReset.resetKeyboard();
   gameReset.resetHearts();
   gameReset.resetPhrase();
+  missed = 0;
   loadGame();
 }
 
@@ -121,7 +121,6 @@ qwerty.addEventListener("click", (event) => {
     } else {
       const hearts = document.querySelectorAll("img");
       hearts[missed].src = "images/lostHeart.png";
-      hearts.length--;
       missed += 1;
     }
     checkWin();
